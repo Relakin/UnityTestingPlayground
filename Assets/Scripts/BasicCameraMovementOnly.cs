@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraMovementOnly : MonoBehaviour
+public class BasicCameraMovementOnly : MonoBehaviour
 {
     public float sensitivity = 2.0f;    // Mouse sensitivity
     public float maxYAngle = 50.0f;     // Maximum vertical angle

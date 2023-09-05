@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBodyRotation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform bodyTransform;
+    public PlayerHeadRotation headRotationScript;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        float mouseX = Input.GetAxisRaw("Mouse X");
+
+        if (headRotationScript.IsHeadRotationAtClamp())
+        {
+            bodyTransform.Rotate(Vector3.up, mouseX * headRotationScript.cameraMovement.sensitivity);
+        }
     }
 }

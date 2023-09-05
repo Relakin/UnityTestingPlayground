@@ -3,18 +3,11 @@ using UnityEngine;
 public class PlayerHeadRotation : MonoBehaviour
 {
     public Transform headTransform;
-
-    private CameraMovement cameraMovement;
-
+    public CameraMovement cameraMovement;
+    
     private void Start()
     {
         cameraMovement = Camera.main.GetComponent<CameraMovement>();
-
-        if (headTransform != null)
-        {
-            Quaternion defaultHeadRotation = cameraMovement.GetDefaultRotation();
-            headTransform.localRotation = defaultHeadRotation;
-        }
     }
 
     private void Update()
@@ -27,12 +20,18 @@ public class PlayerHeadRotation : MonoBehaviour
     {
         if (headTransform != null)
         {
-            Quaternion headRotation = Quaternion.Euler(-cameraMovement.cameraRotationX, 0, -cameraMovement.cameraRotationY);
+            Quaternion headRotation = Quaternion.Euler(0, 0, -cameraMovement.cameraRotationY);
             headTransform.localRotation = headRotation;
         }
         else
         {
             Debug.LogWarning("PlayerHeadRotation: headTransform is null in ApplyHeadRotation");
         }
+    }
+    
+    public bool IsHeadRotationAtClamp()
+    {
+        return cameraMovement.cameraRotationX == cameraMovement.minXAngle ||
+               cameraMovement.cameraRotationX == cameraMovement.maxXAngle;
     }
 }

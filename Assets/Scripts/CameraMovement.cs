@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] private float sensitivity = 2.0f;
-    [SerializeField] private const float maxYAngle = 40.0f;
-    [SerializeField] private const float minYAngle = -45.0f;
-    [SerializeField] private const float maxXAngle = 65.0f;
-    [SerializeField] private const float minXAngle = -65.0f;
+    [SerializeField] public float sensitivity = 2.0f;
+    [SerializeField] public float maxYAngle = 40.0f;
+    [SerializeField] public float minYAngle = -45.0f;
+    [SerializeField] public float maxXAngle = 65.0f;
+    [SerializeField] public float minXAngle = -65.0f;
     
     private const string mouseXInputAxis = "Mouse X";
     private const string mouseYInputAxis = "Mouse Y";
@@ -39,6 +39,11 @@ public class CameraMovement : MonoBehaviour
         cameraRotationX = 0.0f;
         cameraRotationY = 0.0f;
         ApplyCameraRotation();
+    }
+
+    public void SetCameraRotationX(float value)
+    {
+        cameraRotationX = value;
     }
 
     public void RotateCamera()
